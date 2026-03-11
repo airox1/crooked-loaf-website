@@ -52,24 +52,52 @@ section{padding:6rem 4rem;}
 .about-card-icon{font-size:1.5rem;margin-bottom:.8rem;display:block;}
 .about-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--gold);margin-bottom:.4rem;}
 .about-card p{font-size:.85rem;color:rgba(247,240,230,.6);line-height:1.6;}
-#menu{background:var(--warm-white);}
-.menu-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;}
-.menu-tabs{display:flex;border:1px solid rgba(92,61,46,.2);}
-.menu-tab{padding:.6rem 1.5rem;font-size:.8rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;background:none;border:none;border-right:1px solid rgba(92,61,46,.2);cursor:pointer;color:var(--text-light);transition:all .2s;}
-.menu-tab:last-child{border-right:none;}
-.menu-tab.active,.menu-tab:hover{background:var(--brown-dark);color:var(--cream);}
-.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(92,61,46,.1);}
-.menu-item{background:var(--warm-white);padding:2rem;display:flex;flex-direction:column;gap:.5rem;transition:background .2s;}
-.menu-item:hover{background:var(--cream);}
-.menu-item-img{width:100%;height:160px;overflow:hidden;margin-bottom:.5rem;}
-.menu-item-img img,.gallery-photo img,.hero-photo-1 img,.hero-photo-2 img{width:100%;height:100%;object-fit:cover;display:block;}
-.menu-item-tag{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--green);font-weight:500;}
-.menu-item h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--brown-dark);}
-.menu-item p{font-size:.85rem;color:var(--text-light);line-height:1.6;font-family:'Lora',serif;font-style:italic;flex:1;}
-.menu-item-footer{display:flex;justify-content:space-between;align-items:center;padding-top:.8rem;border-top:1px solid rgba(92,61,46,.1);margin-top:auto;}
-.menu-price{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--brown-dark);}
-.menu-badge{font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .6rem;background:var(--green);color:white;}
+#menu{background:var(--warm-white);padding:6rem 4rem;}
+.menu-header{margin-bottom:4rem;}
+.menu-header-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem;}
+.menu-tabs{display:flex;gap:0;position:relative;border-bottom:1px solid rgba(92,61,46,.15);}
+.menu-tab{padding:.75rem 2rem;font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;background:none;border:none;cursor:pointer;color:var(--text-light);transition:color .25s;position:relative;}
+.menu-tab::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:2px;background:var(--brown-dark);transform:scaleX(0);transition:transform .3s ease;}
+.menu-tab.active{color:var(--brown-dark);}
+.menu-tab.active::after{transform:scaleX(1);}
+.menu-tab:hover{color:var(--brown-dark);}
 .menu-panel{display:none;}.menu-panel.active{display:block;}
+.menu-list{display:flex;flex-direction:column;gap:1px;background:rgba(92,61,46,.08);}
+.menu-row{display:grid;grid-template-columns:280px 1fr auto;align-items:center;gap:0;background:var(--warm-white);cursor:pointer;transition:background .2s;}
+.menu-row:hover{background:var(--cream);}
+.menu-row-img{width:280px;height:180px;overflow:hidden;flex-shrink:0;}
+.menu-row-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;}
+.gallery-photo img{width:100%;height:100%;object-fit:cover;display:block;object-position:center 42%;}
+.hero-photo-1 img,.hero-photo-2 img{width:100%;height:100%;object-fit:cover;display:block;}
+.menu-row:hover .menu-row-img img{transform:scale(1.04);}
+.menu-row-body{padding:1.8rem 2.5rem;display:flex;flex-direction:column;gap:.4rem;}
+.menu-row-tag{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green);font-weight:500;}
+.menu-row-name{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--brown-dark);line-height:1.2;}
+.menu-row-desc{font-family:'Lora',serif;font-style:italic;font-size:.88rem;color:var(--text-light);line-height:1.65;max-width:520px;}
+.menu-row-badges{display:flex;gap:.5rem;margin-top:.3rem;}
+.menu-row-badge{font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .55rem;background:var(--green);color:white;}
+.menu-row-right{padding:1.8rem 2.5rem;display:flex;flex-direction:column;align-items:flex-end;gap:.6rem;min-width:120px;}
+.menu-row-price{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:800;color:var(--brown-dark);}
+.menu-row-cta{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);font-weight:500;display:flex;align-items:center;gap:.3rem;transition:gap .2s;}
+.menu-row:hover .menu-row-cta{gap:.55rem;}
+
+/* Modal */
+.menu-modal-overlay{position:fixed;inset:0;background:rgba(44,26,14,.7);z-index:500;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(4px);}
+.menu-modal-overlay.open{opacity:1;pointer-events:all;}
+.menu-modal{background:var(--warm-white);display:grid;grid-template-columns:1fr 1fr;max-width:820px;width:90%;max-height:90vh;overflow:hidden;transform:translateY(20px) scale(.97);transition:transform .35s ease;position:relative;}
+.menu-modal-overlay.open .menu-modal{transform:translateY(0) scale(1);}
+.menu-modal-img{height:100%;min-height:420px;overflow:hidden;}
+.menu-modal-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.menu-modal-body{padding:3rem 2.5rem;display:flex;flex-direction:column;overflow-y:auto;}
+.menu-modal-tag{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);font-weight:500;margin-bottom:.8rem;}
+.menu-modal-name{font-family:'Playfair Display',serif;font-size:2rem;font-weight:800;color:var(--brown-dark);line-height:1.1;margin-bottom:1.2rem;}
+.menu-modal-divider{width:2.5rem;height:2px;background:var(--gold);margin-bottom:1.2rem;}
+.menu-modal-desc{font-family:'Lora',serif;font-style:italic;font-size:.95rem;color:var(--text-light);line-height:1.75;margin-bottom:2rem;flex:1;}
+.menu-modal-footer{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;border-top:1px solid rgba(92,61,46,.12);}
+.menu-modal-price{font-family:'Playfair Display',serif;font-size:2rem;font-weight:800;color:var(--brown-dark);}
+.menu-modal-badges{display:flex;gap:.5rem;}
+.menu-modal-close{position:absolute;top:1rem;right:1rem;background:var(--brown-dark);color:var(--cream);border:none;width:2rem;height:2rem;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;z-index:10;transition:background .2s;}
+.menu-modal-close:hover{background:var(--brown-mid);}
 #gallery{background:var(--cream);}
 .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,220px);gap:6px;margin-top:3rem;}
 .gallery-item{overflow:hidden;position:relative;cursor:pointer;}
@@ -136,7 +164,7 @@ footer{background:var(--brown-dark);color:var(--cream);padding:3rem 4rem;display
 .footer-links a:hover{color:var(--gold);}
 .footer-copy{font-size:.8rem;color:rgba(247,240,230,.35);}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:900px){nav{padding:1rem 1.5rem;}.nav-links{display:none;}#home{grid-template-columns:1fr;}.hero-right{height:300px;}.hero-left{padding:3rem 1.5rem;}#about{grid-template-columns:1fr;gap:2rem;padding:3rem 1.5rem;}section{padding:4rem 1.5rem;}.menu-header{flex-direction:column;align-items:flex-start;gap:1.5rem;}.menu-grid{grid-template-columns:1fr;}.gallery-grid{grid-template-columns:1fr 1fr;}.gallery-item:first-child{grid-column:span 2;height:220px;}.gallery-photo{height:180px;}#booking{grid-template-columns:1fr;gap:2rem;}.contact-grid{grid-template-columns:1fr;}footer{flex-direction:column;gap:1.5rem;text-align:center;}}
+@media(max-width:900px){nav{padding:1rem 1.5rem;}.nav-links{display:none;}#home{grid-template-columns:1fr;}.hero-right{height:300px;}.hero-left{padding:3rem 1.5rem;}#about{grid-template-columns:1fr;gap:2rem;padding:3rem 1.5rem;}section{padding:4rem 1.5rem;}#menu{padding:4rem 1.5rem;}.menu-header-top{flex-direction:column;align-items:flex-start;gap:1rem;}.menu-header-top p{text-align:left;}.menu-row{grid-template-columns:140px 1fr;}.menu-row-img{width:140px;height:140px;}.menu-row-right{display:none;}.gallery-grid{grid-template-columns:1fr 1fr;}.gallery-item:first-child{grid-column:span 2;height:220px;}.gallery-photo{height:180px;}#booking{grid-template-columns:1fr;gap:2rem;}.contact-grid{grid-template-columns:1fr;}footer{flex-direction:column;gap:1.5rem;text-align:center;}.menu-modal{grid-template-columns:1fr;}.menu-modal-img{min-height:220px;}.menu-modal-body{padding:2rem 1.5rem;}}
 </style>
 </head>
 <body>
@@ -190,9 +218,12 @@ footer{background:var(--brown-dark);color:var(--cream);padding:3rem 4rem;display
 
 <section id="menu">
   <div class="menu-header">
-    <div>
-      <div class="section-tag">What We Make</div>
-      <h2 class="section-title">The <em>Menu</em></h2>
+    <div class="menu-header-top">
+      <div>
+        <div class="section-tag">What We Make</div>
+        <h2 class="section-title">The <em>Menu</em></h2>
+      </div>
+      <p style="font-family:'Lora',serif;font-style:italic;font-size:.9rem;color:var(--text-light);max-width:220px;text-align:right;line-height:1.6;">Click any item for a closer look</p>
     </div>
     <div class="menu-tabs">
       <button class="menu-tab active" onclick="showTab('bakery',this)">Bakery</button>
@@ -200,22 +231,79 @@ footer{background:var(--brown-dark);color:var(--cream);padding:3rem 4rem;display
       <button class="menu-tab" onclick="showTab('drinks',this)">Drinks</button>
     </div>
   </div>
-  <div id="tab-bakery" class="menu-panel active"><div class="menu-grid">
-    <div class="menu-item"><div class="menu-item-img"><img src="images/menu-sourdough.jpg" alt="Country Sourdough"></div><span class="menu-item-tag">Signature</span><h3>Country Sourdough</h3><p>Heritage wheat, 36-hour cold ferment, open crumb. Our flagship loaf — baked at 4am, gone by noon.</p><div class="menu-item-footer"><span class="menu-price">$9</span><span class="menu-badge">Bestseller</span></div></div>
-    <div class="menu-item"><div class="menu-item-img"><img src="images/menu-rye.jpg" alt="Seeded Rye Loaf"></div><span class="menu-item-tag">Seeded</span><h3>Seeded Rye Loaf</h3><p>Dark rye, caraway seeds, and a touch of molasses. Dense, earthy, and deeply satisfying.</p><div class="menu-item-footer"><span class="menu-price">$10</span></div></div>
-    <div class="menu-item"><div class="menu-item-img"><img src="images/menu-garlic-herb.jpg" alt="Roasted Garlic & Herb"></div><span class="menu-item-tag">Seasonal</span><h3>Roasted Garlic &amp; Herb</h3><p>Whole roasted garlic, fresh rosemary, olive oil baked right into the crust.</p><div class="menu-item-footer"><span class="menu-price">$12</span><span class="menu-badge">Seasonal</span></div></div>
+
+  <div id="tab-bakery" class="menu-panel active"><div class="menu-list">
+    <div class="menu-row" onclick="openModal('Country Sourdough','Signature','Heritage wheat, 36-hour cold ferment, open crumb. Our flagship loaf — baked at 4am, gone by noon. The crust shatters, the crumb pulls, and the tang is just enough. Best eaten the day it is baked, still warm from the oven.','$9','images/menu-sourdough.jpg',['Bestseller'])">
+      <div class="menu-row-img"><img src="images/menu-sourdough.jpg" alt="Country Sourdough"></div>
+      <div class="menu-row-body"><span class="menu-row-tag">Signature</span><div class="menu-row-name">Country Sourdough</div><div class="menu-row-desc">Heritage wheat, 36-hour cold ferment, open crumb. Our flagship loaf — baked at 4am, gone by noon.</div><div class="menu-row-badges"><span class="menu-row-badge">Bestseller</span></div></div>
+      <div class="menu-row-right"><span class="menu-row-price">$9</span><span class="menu-row-cta">View →</span></div>
+    </div>
+    <div class="menu-row" onclick="openModal('Seeded Rye Loaf','Seeded','Dark rye, caraway seeds, and a touch of molasses. Dense, earthy, and deeply satisfying. The kind of loaf that makes everything taste better — especially good with aged cheese and salted butter.','$10','images/menu-rye.jpg',[])">
+      <div class="menu-row-img"><img src="images/menu-rye.jpg" alt="Seeded Rye Loaf"></div>
+      <div class="menu-row-body"><span class="menu-row-tag">Seeded</span><div class="menu-row-name">Seeded Rye Loaf</div><div class="menu-row-desc">Dark rye, caraway seeds, and a touch of molasses. Dense, earthy, and deeply satisfying.</div></div>
+      <div class="menu-row-right"><span class="menu-row-price">$10</span><span class="menu-row-cta">View →</span></div>
+    </div>
+    <div class="menu-row" onclick="openModal('Roasted Garlic &amp; Herb','Seasonal','Whole roasted garlic, fresh rosemary, olive oil baked right into the crust. A loaf that fills the whole room the moment it is sliced. Extraordinary with good olive oil or alongside a board of cured meats.','$12','images/menu-garlic-herb.jpg',['Seasonal'])">
+      <div class="menu-row-img"><img src="images/menu-garlic-herb.jpg" alt="Roasted Garlic & Herb"></div>
+      <div class="menu-row-body"><span class="menu-row-tag">Seasonal</span><div class="menu-row-name">Roasted Garlic &amp; Herb</div><div class="menu-row-desc">Whole roasted garlic, fresh rosemary, olive oil baked right into the crust.</div><div class="menu-row-badges"><span class="menu-row-badge">Seasonal</span></div></div>
+      <div class="menu-row-right"><span class="menu-row-price">$12</span><span class="menu-row-cta">View →</span></div>
+    </div>
   </div></div>
-  <div id="tab-pastries" class="menu-panel"><div class="menu-grid">
-    <div class="menu-item"><div class="menu-item-img"><img src="images/menu-croissant.jpg" alt="Butter Croissant"></div><span class="menu-item-tag">Classic</span><h3>Butter Croissant</h3><p>72-layer laminated dough, local cultured butter, baked until deeply caramelized.</p><div class="menu-item-footer"><span class="menu-price">$4.50</span><span class="menu-badge">Bestseller</span></div></div>
-    <div class="menu-item"><div class="menu-item-img"><img src="images/menu-apple-tart.jpg" alt="Apple & Brown Sugar Tart"></div><span class="menu-item-tag">Seasonal</span><h3>Apple &amp; Brown Sugar Tart</h3><p>Local apples, brown butter frangipane, and flaky all-butter pastry. Changes each season.</p><div class="menu-item-footer"><span class="menu-price">$6</span><span class="menu-badge">Seasonal</span></div></div>
-    <div class="menu-item"><div class="menu-item-img"><img src="images/menu-feta-danish.jpg" alt="Feta & Herb Danish"></div><span class="menu-item-tag">Savory</span><h3>Feta &amp; Herb Danish</h3><p>Whipped feta, fresh dill, and caramelized onion in a flaky laminated pastry.</p><div class="menu-item-footer"><span class="menu-price">$5.50</span></div></div>
+
+  <div id="tab-pastries" class="menu-panel"><div class="menu-list">
+    <div class="menu-row" onclick="openModal('Butter Croissant','Classic','72-layer laminated dough, local cultured butter, baked until deeply caramelised. Each one takes two days to make — the dough is rested, folded, and rested again before it ever sees the oven. Best eaten within an hour of baking.','$4.50','images/menu-croissant.jpg',['Bestseller'])">
+      <div class="menu-row-img"><img src="images/menu-croissant.jpg" alt="Butter Croissant"></div>
+      <div class="menu-row-body"><span class="menu-row-tag">Classic</span><div class="menu-row-name">Butter Croissant</div><div class="menu-row-desc">72-layer laminated dough, local cultured butter, baked until deeply caramelised.</div><div class="menu-row-badges"><span class="menu-row-badge">Bestseller</span></div></div>
+      <div class="menu-row-right"><span class="menu-row-price">$4.50</span><span class="menu-row-cta">View →</span></div>
+    </div>
+    <div class="menu-row" onclick="openModal('Apple &amp; Brown Sugar Tart','Seasonal','Local apples, brown butter frangipane, and flaky all-butter pastry. This changes with the seasons — right now it is Bramley and Cox, slow-cooked with cider and brown sugar until the edges catch and caramelise.','$6','images/menu-apple-tart.jpg',['Seasonal'])">
+      <div class="menu-row-img"><img src="images/menu-apple-tart.jpg" alt="Apple & Brown Sugar Tart"></div>
+      <div class="menu-row-body"><span class="menu-row-tag">Seasonal</span><div class="menu-row-name">Apple &amp; Brown Sugar Tart</div><div class="menu-row-desc">Local apples, brown butter frangipane, and flaky all-butter pastry. Changes each season.</div><div class="menu-row-badges"><span class="menu-row-badge">Seasonal</span></div></div>
+      <div class="menu-row-right"><span class="menu-row-price">$6</span><span class="menu-row-cta">View →</span></div>
+    </div>
+    <div class="menu-row" onclick="openModal('Feta &amp; Herb Danish','Savory','Whipped feta, fresh dill, and caramelised onion in a flaky laminated pastry. A savoury pastry that punches well above its weight. The feta is hand-whipped with lemon and olive oil, the onions cooked low and slow for an hour.','$5.50','images/menu-feta-danish.jpg',[])">
+      <div class="menu-row-img"><img src="images/menu-feta-danish.jpg" alt="Feta & Herb Danish"></div>
+      <div class="menu-row-body"><span class="menu-row-tag">Savory</span><div class="menu-row-name">Feta &amp; Herb Danish</div><div class="menu-row-desc">Whipped feta, fresh dill, and caramelised onion in a flaky laminated pastry.</div></div>
+      <div class="menu-row-right"><span class="menu-row-price">$5.50</span><span class="menu-row-cta">View →</span></div>
+    </div>
   </div></div>
-  <div id="tab-drinks" class="menu-panel"><div class="menu-grid">
-    <div class="menu-item"><div class="menu-item-img"><img src="images/menu-filter-coffee.jpg" alt="Filter Coffee"></div><span class="menu-item-tag">House Coffee</span><h3>Filter Coffee</h3><p>Single-origin beans, batch brewed fresh every 45 minutes. Ask us what's on today.</p><div class="menu-item-footer"><span class="menu-price">$3.50</span><span class="menu-badge">Daily Fresh</span></div></div>
-    <div class="menu-item"><div class="menu-item-img"><img src="images/menu-flat-white.jpg" alt="Flat White"></div><span class="menu-item-tag">Espresso</span><h3>Flat White</h3><p>Double ristretto, microfoamed whole milk. Smooth, rich, no nonsense.</p><div class="menu-item-footer"><span class="menu-price">$5</span></div></div>
-    <div class="menu-item"><div class="menu-item-img"><img src="images/menu-honey-latte.jpg" alt="Honey & Oat Latte"></div><span class="menu-item-tag">Seasonal</span><h3>Honey &amp; Oat Latte</h3><p>House-made oat milk, local wildflower honey, double shot. Warm and grounding.</p><div class="menu-item-footer"><span class="menu-price">$6</span><span class="menu-badge">Seasonal</span></div></div>
+
+  <div id="tab-drinks" class="menu-panel"><div class="menu-list">
+    <div class="menu-row" onclick="openModal('Filter Coffee','House Coffee','Single-origin beans, batch brewed fresh every 45 minutes. We rotate the origin weekly — ask us what is on today. Clean, clear, and worth slowing down for. No espresso machine required.','$3.50','images/menu-filter-coffee.jpg',['Daily Fresh'])">
+      <div class="menu-row-img"><img src="images/menu-filter-coffee.jpg" alt="Filter Coffee"></div>
+      <div class="menu-row-body"><span class="menu-row-tag">House Coffee</span><div class="menu-row-name">Filter Coffee</div><div class="menu-row-desc">Single-origin beans, batch brewed fresh every 45 minutes. Ask us what is on today.</div><div class="menu-row-badges"><span class="menu-row-badge">Daily Fresh</span></div></div>
+      <div class="menu-row-right"><span class="menu-row-price">$3.50</span><span class="menu-row-cta">View →</span></div>
+    </div>
+    <div class="menu-row" onclick="openModal('Flat White','Espresso','Double ristretto, microfoamed whole milk. Smooth, rich, no nonsense. Our milk is from a single dairy farm 12 miles away. We steam it to 60°C, no hotter — silky and sweet without scorching.','$5','images/menu-flat-white.jpg',[])">
+      <div class="menu-row-img"><img src="images/menu-flat-white.jpg" alt="Flat White"></div>
+      <div class="menu-row-body"><span class="menu-row-tag">Espresso</span><div class="menu-row-name">Flat White</div><div class="menu-row-desc">Double ristretto, microfoamed whole milk. Smooth, rich, no nonsense.</div></div>
+      <div class="menu-row-right"><span class="menu-row-price">$5</span><span class="menu-row-cta">View →</span></div>
+    </div>
+    <div class="menu-row" onclick="openModal('Honey &amp; Oat Latte','Seasonal','House-made oat milk, local wildflower honey, double shot. Warm and grounding. The oat milk is made fresh every morning — soaked, blended, strained. The honey comes from a beekeeper two towns over.','$6','images/menu-honey-latte.jpg',['Seasonal'])">
+      <div class="menu-row-img"><img src="images/menu-honey-latte.jpg" alt="Honey & Oat Latte"></div>
+      <div class="menu-row-body"><span class="menu-row-tag">Seasonal</span><div class="menu-row-name">Honey &amp; Oat Latte</div><div class="menu-row-desc">House-made oat milk, local wildflower honey, double shot. Warm and grounding.</div><div class="menu-row-badges"><span class="menu-row-badge">Seasonal</span></div></div>
+      <div class="menu-row-right"><span class="menu-row-price">$6</span><span class="menu-row-cta">View →</span></div>
+    </div>
   </div></div>
 </section>
+
+<!-- Menu Modal -->
+<div class="menu-modal-overlay" id="menuModal" onclick="handleModalClick(event)">
+  <div class="menu-modal">
+    <button class="menu-modal-close" onclick="closeModal()">✕</button>
+    <div class="menu-modal-img"><img id="modalImg" src="" alt=""></div>
+    <div class="menu-modal-body">
+      <div class="menu-modal-tag" id="modalTag"></div>
+      <div class="menu-modal-name" id="modalName"></div>
+      <div class="menu-modal-divider"></div>
+      <div class="menu-modal-desc" id="modalDesc"></div>
+      <div class="menu-modal-footer">
+        <span class="menu-modal-price" id="modalPrice"></span>
+        <div class="menu-modal-badges" id="modalBadges"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <section id="gallery">
   <div class="section-tag">A Glimpse Inside</div>
@@ -283,10 +371,44 @@ footer{background:var(--brown-dark);color:var(--cream);padding:3rem 4rem;display
 <footer>
   <div class="footer-logo">Crooked<span>Loaf</span></div>
   <div class="footer-links"><a href="#home">Home</a><a href="#menu">Menu</a><a href="#booking">Bookings</a><a href="#contact">Contact</a></div>
-  <div class="footer-copy">© 2024 Crooked Loaf. Made with flour &amp; care.</div>
+  <div class="footer-copy">© 2026 Crooked Loaf. Made with flour &amp; care.</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function showTab(t,b){document.querySelectorAll('.menu-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.menu-tab').forEach(x=>x.classList.remove('active'));document.getElementById('tab-'+t).classList.add('active');b.classList.add('active');}
-function submitBooking(){document.getElementById('booking-form-inner').style.display='none';document.getElementById('booking-success').classList.add('show');}
-function toggleFa
+<script>
+function showTab(t,b){
+  document.querySelectorAll('.menu-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.menu-tab').forEach(x=>x.classList.remove('active'));
+  document.getElementById('tab-'+t).classList.add('active');
+  b.classList.add('active');
+}
+function submitBooking(){
+  document.getElementById('booking-form-inner').style.display='none';
+  document.getElementById('booking-success').classList.add('show');
+}
+function toggleFaq(btn){
+  const item=btn.closest('.faq-item');
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!isOpen) item.classList.add('open');
+}
+function openModal(name,tag,desc,price,img,badges){
+  document.getElementById('modalName').innerHTML=name;
+  document.getElementById('modalTag').textContent=tag;
+  document.getElementById('modalDesc').textContent=desc;
+  document.getElementById('modalPrice').textContent=price;
+  const imgEl=document.getElementById('modalImg');
+  imgEl.src=img; imgEl.alt=name;
+  const badgesEl=document.getElementById('modalBadges');
+  badgesEl.innerHTML=badges.map(b=>`<span class="menu-row-badge">${b}</span>`).join('');
+  document.getElementById('menuModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  document.getElementById('menuModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+function handleModalClick(e){
+  if(e.target===document.getElementById('menuModal')) closeModal();
+}
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+</script>
