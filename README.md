@@ -8,7 +8,7 @@ A fully static, single-file website built for **Crooked Loaf**, a fictional arti
 
 ## Live Site
 
-🌐 [View on GitHub Pages](https://yourusername.github.io/crooked-loaf-website/)
+🌐 [View on GitHub Pages]([https://yourusername.github.io/crooked-loaf-website/](https://airox1.github.io/crooked-loaf-website/))
 
 ---
 
